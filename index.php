@@ -72,28 +72,11 @@
 
                               }
                            $region = array_unique(array_column($resultSet, 'region'));
+                           $province_pre = array_unique(array_column($resultSet, 'province'));
+                           $province = array_intersect_key($resultSet, $province_pre);
+                           $city_pre = array_unique(array_column($resultSet, 'city'));
+                           $city = array_intersect_key($resultSet, $city_pre);
 
-                            // select province from array
-                          $province = array();
-                          foreach ($resultSet as $value) {
-                                  
-                                   $pos = array_search($value['province'], array_column($province, "province") );
-                                    if ($pos === false)
-                                        {
-                                        $province[] = $value;
-                                         }
-                                         }
-                          // select city    
-                          $city = array();
-                          foreach ($resultSet as $value) {
-                                  
-                                   $pos = array_search($value['city'], array_column($city, "city") );
-                                    if ($pos === false)
-                                        {
-                                        $city[] = $value;
-                                         }
-                                         }               
-                         
                            ?>
                <div class="card-body">
                   <form>
